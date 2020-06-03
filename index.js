@@ -1,8 +1,9 @@
-const { parse, valid } = require('./input');
-const { execute } = require('./notes')
-const minimist = require('minimist');
+const Input = require('./lib/Input');
+const Note = require('./lib/notes');
 
-const notes = parse(process.argv);
+let input = new Input(process.argv);
 
-valid(notes) ? execute(notes) : console.log('Bad Input');
+const isValid = input.valid();
+// Input(notes) ? Note(notes) : console.log('Bad Input');
 
+isValid ? Note.execute(input) : console.log('Fail');
