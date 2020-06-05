@@ -1,5 +1,8 @@
-const minimist = require('minimist');
+const Input = require('./lib/Input');
+const Note = require('./lib/notes');
 
-console.log(minimist(process.argv))
+const input = new Input(process.argv);
 
+const isValid = input.valid();
 
+isValid ? Note.execute(input) : console.log('Fail');
